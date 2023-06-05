@@ -1,0 +1,21 @@
+name: ci pipeline 
+
+on:
+  push:
+    branches:
+        - main
+
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: install dependencies
+        run: npm install
+      - name: run linter
+        run: npm run lint
+      - name: build client
+        run: npm run start
